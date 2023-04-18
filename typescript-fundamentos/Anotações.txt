@@ -1,0 +1,996 @@
+Qual das alternativas abaixo importa corretamente um módulo nativo do EcmaScript?
+
+R: <script type="module" src="app/app.js"></script>
+O atributo type="module" indica para o navegador que o arquivo a carregado deve 
+ser tratado com um módulo e não um script.
+
+-----------------------------------------------------------------------------------
+
+Qual das alternativas abaixo é verdadeira sobre o escopo de um módulo?
+
+R: Tudo o que for declarado dentro de um módulo estará confinado nesse módulo, 
+ao menos que o desenvolvedor decida exportar uma ou mais funcionalidades.
+
+-----------------------------------------------------------------------------------
+
+No paradigma da orientação a objetos criamos a representação de algo do mundo 
+real em nosso programa através de modelos e esses modelos são definidos através 
+de classes.
+
+Marque a alternativa que cria corretamente uma classe usando o ECMASCRIPT 2015:
+
+R: class Pessoa {
+    constructor(nome, idade) {
+        this.nome = nome;
+        this.idade = idade;
+    }
+}
+
+-----------------------------------------------------------------------------------
+
+Introdução ao projeto e sua estrutura;
+Um pouco sobre módulos do ECMASCRIPT;
+Modelagem de uma Negociação em Javascript;
+Buracos em nossa modelagem por limitações da linguagem Javascript;
+
+-----------------------------------------------------------------------------------
+
+Temos as seguintes afirmações a respeito do compilador do TypeScript:
+
+1) O uso de Node.js é opcional, mas altamente recomendável
+
+2) Ele traduz um código escrito em JavaScript para um código compatível com o 
+TypeScript, necessário para que o navegador o compreenda
+
+3) Podemos passar configurações especiais para o compilador através do arquivo 
+tsconfig.json
+
+4) É instalado através do npm
+
+Sobre as afirmativas anteriores, podemos dizer que:
+
+R: 1 e 2 são falsas.
+O uso do Node.js não é opcional, pois o compilador depende desta plataforma 
+para funcionar, inclusive é baixado pelo seu gerenciador de pacotes npm. 
+Além disso, o código TypeScript precisa ser traduzido/convertido para um 
+código em ECMASCRIPT para que seja entendido pelo navegador. Lembre-se que 
+apenas ECMASCRIPT é suportado pelo navegador.
+
+-----------------------------------------------------------------------------------
+
+Temos a seguinte declaração do arquivo tsconfig.json:
+
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "outDir": "dist/js",    
+    },
+    "include": [
+        "app/**/*"
+    ]
+}
+
+Marque a alternativa correta a respeito da configuração:
+
+R: A propriedade "target" indica para o compilator tsc (TypeScript Compiler) 
+para qual versão do Javascript o código escrito em TypeScript deve ser compilado. 
+Isso significa que o resultado final será arquivos Javascript sem qualquer 
+referência para a sintaxe do Typescript.
+
+A propriedade "target" indica para o compilator tsc (TypeScript Compiler) para 
+qual versão do Javascript o código escrito em TypeScript deve ser compilado. 
+Isso significa que o resultado final será arquivos Javascript sem qualquer 
+referência para a sintaxe do Typescript.
+
+-----------------------------------------------------------------------------------
+
+O TypeScript é um superset da ES2015, ou seja, além de suportar os recurso da 
+linguagem desta versão, adiciona outros. Um exemplo é o suporte ao modificador 
+private.
+
+Marque a opção na qual há um erro de compilação do TypeScript de acesso indevido 
+a uma propriedade privada.
+
+R: class Pessoa {
+
+    private nome;
+    idade;
+
+    constructor(nome, idade) {
+        this.nome = nome;
+        this.idade = idade;
+    }
+}
+
+let pessoa = new Pessoa('Barney', 18);
+pessoa.nome = 'Martin';
+
+Há um erro de compilação. A propriedade nome é declarada com o modificador private, 
+dessa forma, apenas métodos da própria classe podem acessá-la.
+
+-----------------------------------------------------------------------------------
+
+Download do TypeScript
+Configuração do compilador e papel do tsconfig.json
+Integração com scripts do Node.js
+Modificadores de acesso private e public
+Benefícios iniciais da linguagem TypeScript
+
+-----------------------------------------------------------------------------------
+
+Marque apenas as opções verdadeiras sobre o tipo any.
+
+R: Por padrão, é assumido automaticamente pelo TypeScript quando não definimos o 
+tipo das nossas variáveis.
+
+É possível desativar o tipo implícito any passando uma configuração especial 
+para o compilador no arquivo tsconfig.json. Isso fará com que o compilador 
+emita um erro em todos os locais que o tipo any foi adotado implicitamente.
+
+-----------------------------------------------------------------------------------
+
+Marina configurou seu arquivo tsconfig.json da seguinte maneira:
+
+{
+    "compilerOptions": {
+        "target": "es6",
+        "outDir": "app/js",
+        "noEmitOnError": true,
+        "noImplicitAny": false
+    },
+    "include": [
+        "app/ts/**/*"
+    ]
+}
+
+Em seguida declarou a seguinte classe:
+
+ class Controller {
+
+   private inputPreco: HTMLInputElement;
+
+    constructor() {
+        this.inputPreco = document.querySelector('#preco');
+    }
+
+    adiciona(event) {
+
+        event.preventDefault();
+
+        alert(this.inputPreco.value);
+    }
+}
+
+Marque as alternativas verdadeiras a respeito da classe Controller.
+
+R: O código compila.
+Apesar do parâmetro event não estar tipado com o tipo Event o código compila, 
+pois em seu arquivo tsconfig.json Marina usou "noImplicitAny": false. Nem era 
+necessário ela ter definido que a propriedade é false, pois esse é o padrão. 
+Um erro de compilação aconteceria se ela tivesse usado "noImplicitAny": true.
+
+-----------------------------------------------------------------------------------
+
+Marque a opção correta que cria um objeto Date a partir de uma string:
+
+R: const date = new Date('2021,2,20');
+A string passada pelo construtor deve ter o ano, mês e dia separados por vírgula.
+
+-----------------------------------------------------------------------------------
+
+O tipo implícito any
+Benefícios da tipagem estática
+Mais configurações do compilador tsc
+Retorno de método explícito
+Conversão de valores da interface do usuário
+
+-----------------------------------------------------------------------------------
+
+Marque apenas as opções que declaram um array corretamente em TypeScript, 
+assumindo que a configuração noImplicitAny está definida com o valor true.
+
+R:  let nomes: Array<string> = [];
+
+    let idades: Array<Number> = [1, 2, 3];
+
+-----------------------------------------------------------------------------------
+
+Marque a opção que declara um array e que não disponibilize a remoção ou
+inclusão de novos items.
+
+R: const nomes: ReadonlyArray<string> = ['a', 'b', 'c'];
+
+-----------------------------------------------------------------------------------
+
+Modelagem da classe Negociacoes
+Utilização de Generics
+Revisão sobre encapsulamento
+Questões de mutabilidade e como solucioná-la
+O tipo ReadonlyArray
+Adição de negociações em nossa lista
+
+-----------------------------------------------------------------------------------
+
+export class Fatura {
+
+    private criadaEm: Date;
+    private quantidade: number;
+    private valor: number;
+
+    constructor(
+        criadaEm: Date, 
+        quantidade: number, 
+        valor: number
+    ) {
+            this.criadaEm = criadaEm;
+            this.quantidade = quantidade;
+            this.valor = valor;
+    }
+}
+
+Marque a alternativa que declara a mesma classe utilizando o atalho que o 
+TypeScript possui e que vimos na aula.
+
+R: export class Fatura {
+    constructor(
+        private criadaEm: Date, 
+        private quantidade: number, 
+        private valor: number
+    ) {}
+}
+
+-----------------------------------------------------------------------------------
+
+export class Fatura {
+    constructor(
+        private criadaEm: Date, 
+        private quantidade: number, 
+        private valor: number
+    ) {}
+}
+
+Marque a opção que torna a propriedade criadaEm somente leitura.
+
+R: export class Fatura {
+    constructor(
+        private readonly criadaEm: Date, 
+        private quantidade: number, 
+        private valor: number
+    ) {}
+}
+
+-----------------------------------------------------------------------------------
+
+Nova maneira de declaração de array com generics
+O tipo ReadonlyArray
+O modificador readonly
+Getters vs propriedades públicas em modo de leitura
+Programação defensiva
+
+-----------------------------------------------------------------------------------
+
+Utilizando a API do DOM, podemos criar elementos dinamicamente através de 
+document.createElement ou:
+
+Através da propriedade innerHTML que recebe uma string que é convertida 
+para elementos do DOM.
+
+-----------------------------------------------------------------------------------
+
+Guga escreveu o seguinte código:
+
+let vogais: string[] = ['a', 'e', 'i', 'o', 'u'];
+let template = `
+
+    <ul>
+        ${
+            vogais.map(vogal => 
+                `
+                    <li>${vogal.toUpperCase()}</li>
+                `
+            ).join('')
+        }
+    </ul>
+`;
+console.log(template);
+
+A saída de console.log exibirá:
+
+<ul>
+    <li>A</li>   
+    <li>E</li>     
+    <li>I</li>      
+    <li>O</li>      
+    <li>U</li>    
+</ul>
+
+-----------------------------------------------------------------------------------
+
+Inspiração no React para criação de templates declarativos e dinâmicos
+Manipulação declarativa do DOM através de template
+Template dinâmico
+Formatação de datas usando Intl
+
+-----------------------------------------------------------------------------------
+
+Mônica decidiu criar um jogo em JavaScript, mas optou por utilizar TypeScript 
+devido aos recursos extras da linguagem. Ela criou três classes:
+
+Humanoide
+Humano
+Alienigena
+
+Em termos de design, tanto Humano quanto Alienigena são humanóides, por isso 
+herdam dessa classe:
+
+class Humanoide {
+
+    private _energia: number = 100;
+    private _nome: string = '';
+
+    get energia() {
+        return this._energia;
+    }
+
+    get nome() {
+        return this._nome;
+    }
+
+    set nome(nome) {
+        this._nome = nome;
+    }
+
+}
+
+class Humano extends Humanoide {
+
+    private _idade: number = 0;
+
+    get idade() {
+        return this._idade;
+    }
+
+    set idade(idade) {
+        this._idade = idade;
+    }
+}
+
+class Alienigena extends Humanoide {
+
+    private _energiaExtra: number = 100;
+
+    get energia() {
+        return this._energia + this._energiaExtra;
+    }
+}
+
+R: A classe Alienigena não compila. Ela tenta acessar no através do seu 
+getter get energia() uma propriedade privada da classe pai.
+
+-----------------------------------------------------------------------------------
+
+Temos o seguinte código:
+
+class Pai {
+    private nome = '';
+}
+
+class Filha extends Pai {
+
+}
+
+const filha = new Filha();
+console.log(filha.nome);
+
+Marque as opções verdadeiras sobre o código.
+
+R: Mudar o modificador de acesso da propriedade nome de private para protected 
+é uma solução garantindo apenas que classes filhas tenham acesso à propriedade.
+
+Mudar o modificador de acesso da propriedade nome de private para public é uma 
+solução, porém qualquer parte do sistema poderá acessar essa propriedade.
+
+-----------------------------------------------------------------------------------
+
+Fernando utiliza muito o IndexedDB, um banco de dados que vive no próprio 
+navegador.Com forte influência de padrões de projeto, decidiu criar um 
+GenericDAO:
+
+class GenericDAO {
+
+    adiciona(objeto: Negociacao): number {
+        /* implementação do método omitida */
+    }
+
+    apaga(objeto: Negociacao): void {
+        /* implementação do método omitida */
+    }
+
+    buscaPorId(id: number): Negociacao {
+        /* implementação do método omitida */
+    }
+
+    atualiza(objeto: Negociacao): void {
+        /* implementação do método omitida */
+    }
+
+    listaTodos(): Negociacao[] {
+        /* implementação do método omitida */
+    }
+}
+
+// exemplo de uso
+
+let dao = new GenericDao();
+let negociacao = new Negociacao(new Date(), 1, 200);
+
+// recebe o ID da negociação gerada
+
+let id = dao.adiciona(negociacao);
+let negociacaoBuscada = dao.buscaPorId(id);
+
+O código escrito por Fernando não é genérico, pois está amarrado ao tipo 
+Negociacao. Além disso, o ID do elemento no IndexedDB pode ser um número 
+ uma string, e esse tipo está fixo na definição da classe.
+
+Marque a opção que torna a classe realmente genérica, permitindo 
+persistir outros tipos, inclusive a definir um outro tipo de ID.
+
+R: class GenericDAO<T, K> {
+
+    adiciona(objeto: T): K {
+        /* implementação do método omitida */
+    }
+
+    apaga(objeto: T): void {
+        /* implementação do método omitida */
+    }
+
+    buscaPorId(id: K): T {
+        /* implementação do método omitida */
+    }
+
+    atualiza(objeto: T): void {
+        /* implementação do método omitida */
+    }
+
+    listaTodos(): T[] {
+        /* implementação do método omitida */
+    }
+}
+
+Alternativa correta! Pode indicar mais de um tipo genérico. No caso T, 
+será o tipo da classe e K, o tipo do ID.
+
+-----------------------------------------------------------------------------------
+
+Eduardo tem que lidar com a geração de boleto bancário para diversos bancos. 
+Contudo, apesar dos boletos serem muito parecidos, cada banco possui um cabeçalho 
+diferente.
+
+Ele decidiu então escrever o seguinte código:
+
+class Boleto {
+
+    geraLinhaDigitavel(): string {
+        /* lógica comum dos bancos */
+    }
+
+    geraCabecalho(): string {
+        throw new Error('Você precisa implementar a cabeçalho');
+    }
+}
+
+class BoletoBancoA extends Boleto {
+
+    geraCabecalho(): string {
+        /* lógica de geração do cabeçalho do banco A */
+    }
+
+}
+
+class BoletoBancoB extends Boleto {
+
+    geraCabecalho(): string {
+        /* lógica de geração do cabeçalho do banco B */
+    }
+
+}
+
+Marque a afirmativa verdadeira a respeito do código de Eduardo.
+
+R: Não faz sentido haver instâncias de Boleto, pois a classe não define a
+implementação de geraCabecalho(). Essa responsabilidade é das classes 
+filhas, mas nada obriga o desenvolvedor a implementá-las em tempo de 
+desenvolvimento e só será avisado caso tenha esquecido de implementá-lo 
+em tempo de execução, no runtime da aplicação.
+
+-----------------------------------------------------------------------------------
+
+Fernanda, assim como Eduardo do exercício anterior, tem que lidar com a geração 
+de boleto bancário para diversos bancos. Porém ela adotou uma abordagem diferente:
+
+abstract class Boleto {
+
+    geraLinhaDigitavel(): string {
+        /* lógica comum dos bancos */
+    }
+
+    abstract geraCabecalho(): string;
+}
+
+class BoletoBancoA extends Boleto {
+
+    geraCabecalho(): string {
+        /* lógica de geração do cabeçalho do banco A */
+    }
+
+}
+
+class BoletoBancoB extends Boleto {
+
+    geraCabecalho(): string {
+        /* lógica de geração do cabeçalho do banco B */
+    }
+
+}
+
+Marque a afirmativa verdadeira a respeito do código de Fernanda.
+
+R: Como Boleto agora é uma classe abstrata, não é possível criar instâncias 
+desta classe. Isso faz sentido, porque a classe não sabe como o método 
+geraCabecalho deve ser implementado. É responsabilidade das classes filhas 
+a implementação do método.
+
+-----------------------------------------------------------------------------------
+
+Herança com TypeScript
+Classes com tipo genérico
+Classes abstratas
+O modificador protected
+
+-----------------------------------------------------------------------------------
+
+Temos a seguinte instância de date:
+
+const date = new Date();
+
+Marque a opção verdadeira que retorna corretamente o dia da semana.
+
+R: date.getDay(). Lembre-se que os dias da semana são representados por 
+número que vão de 0 (domingo) a 6 (sábado).
+
+-----------------------------------------------------------------------------------
+
+Temos a seguinte enum:
+
+enum MinhaEnum {
+    A,
+    B = 3,
+    C,
+    D,
+    F
+}
+
+Qual o valor de MinhaEnum.D?
+
+R: As enum começam de 0, porém, se modificarmos o valor de alguma das enum, os 
+próximos valores passarão a contar a partir do novo valor.
+
+-----------------------------------------------------------------------------------
+
+Visibilidade de métodos
+Validando negociações em dias úteis
+Vantagens do uso de enums
+Cuidados com enums
+
+-----------------------------------------------------------------------------------
+
+Emma decidiu criar uma classe responsável por conter todas as operações 
+auxiliares que operam sobre data:
+
+class DateUtils {
+
+    public ehDiaUtil(data: Date) {
+        return data.getDay() > DiasDaSemana.DOMINGO
+            && data.getDay() < DiasDaSemana.SABADO;
+    }
+}
+
+Vejamos a seu código em ação:
+
+const dateUtils = new DateUtils();
+const ehDiaUtil = dateUtils.ehDiaUtil(new Date());
+
+Marque a opção que transforma corretamente o método ehDiaUtil em um método 
+estático.
+
+R: class DateUtils {
+
+    public static ehDiaUtil(data: Date) {
+        return data.getDay() > DiasDaSemana.DOMINGO
+            && data.getDay() < DiasDaSemana.SABADO;
+    }
+}
+
+Métodos estáticos podem ser acessados diretamente pela classe sem precisarmos 
+de uma instância desta mesma classe.
+
+-----------------------------------------------------------------------------------
+
+Sobre parâmetros opcionais, marque a única opção que não compila.
+
+R: function(a?: number, b?:number, c:number): void { }
+
+Perfeito, esse código não compila. Parâmetros opcionais devem ser sempre os 
+últimos parâmetros.
+
+-----------------------------------------------------------------------------------
+
+Revisão da lógica de conversão negociações
+Método estáticos
+Parâmetros opcionais
+
+-----------------------------------------------------------------------------------
+
+Ivan tentou remover comentários de seus arquivos ts durante o processo de 
+compilação para JavaScript. No entanto, os comentários ainda continuaram 
+presentes nos arquivos js. Veja como ele configurou o arquivo tsconfig.json:
+
+{
+    "compilerOptions": {
+        "outDir": "dist/js",
+        "target": "ES6",
+        "noEmitOnError": true,
+        "noImplicitAny": false,
+        "removeComments": false,
+    },
+    "include": ["app/**/*"]
+}
+
+Marque a alternativa correta a respeito da configuração realizada por Ivan.
+
+R: Por mais que ele tenha adicionado a propriedade removeComments, ele esqueceu 
+de atribuir o valor true.
+
+-----------------------------------------------------------------------------------
+
+Marque a alternativa correta a respeito do efeito do StrictNullChecks quando 
+ativado.
+
+R: Diz para o compilador TSC que pare de assumir implicitamente o tipo null para 
+todos os tipos da aplicação. Caso null faça sentido, o desenvolvedor deve deixar 
+isso explícito em seu código. Inclusive o StrictNullChecks obrigará o desenvolvedor 
+a tratar todos os pontos de acesso a valores null em sua aplicação, forçando que 
+o desenvolvedor pondere com cuidado cada cenário.
+
+-----------------------------------------------------------------------------------
+
+Mexemos no tsconfig ativamos o removeComments, ele remove os comentarios do JS 
+mas os mantem no TS, não aparece no arquivo compilado.
+Ativamos o StrictNullChecks, por padrão ele vem false. Todo atributo, variavel 
+aceita o atributo null. Todo lugar que chamarmos uma api e essa api pode retornar
+null, vamos ter que tratar a variavel para não quebrar o fluxo da nossa aplicação.
+
+-----------------------------------------------------------------------------------
+
+Remoção de comentários do código compilado
+Ativação do strictNullChecks
+Como suprimir erros, quando fizer sentido, resultantes do strictNullChecks
+Benefícios do strictNullChecks no controle do fluxo da sua aplicação
+
+-----------------------------------------------------------------------------------
+
+Marque todas as afirmativas verdadeiras sobre TypeScript e Decorators.
+
+R: É utilizando como @NomeDoDecorator(). O barril não exporta nada de novo, 
+apenas artefatos de outros módulos.
+
+É um recurso experimental. É verdade. Tanto isso é verdade que precisamos 
+habilitar a propriedade "experimentalDecorators": true no arquivo tsconfig.json.
+
+-----------------------------------------------------------------------------------
+
+Quando criamos um decorator, um dos parâmetros mais importantes é o descriptor.
+
+Marque a alternativa verdadeira sobre o papel do descriptor:
+
+R: Nos dá acesso a implementação do método decorado através de descriptor.value.
+
+-----------------------------------------------------------------------------------
+
+Introdução e estrutura do projeto
+Requisitos não funcionais
+Decorator de método
+Logar tempo de execução com decorator
+
+-----------------------------------------------------------------------------------
+
+Rafaela deseja criar um decorator que, ao ser aplicado em um método, exibe no 
+console a data na qual o método foi chamado. Contudo, se o decorator receber 
+como parâmetro dd/MM/yyyy, deve exibir a data neste formato.
+
+Marque a opção que declara o esqueleto do decorator que Rafaela deseja criar:
+
+R: function logData(formato: string = '') {
+
+    return function(target: any, key: string, descriptor: PropertyDescriptor) {
+         const metodoOriginal = descriptor.value;
+                 // aqui vem a lógica do decorator
+         return descriptor;
+    }
+}
+
+-----------------------------------------------------------------------------------
+
+Marque a alternativa correta a respeito da ordem de aplicação dos decorators.
+
+Selecione uma alternativa
+
+R: Serão aplicados do topo para baixo.
+
+-----------------------------------------------------------------------------------
+
+Decorator com parâmetro
+Criação de um decorator de inspeção
+Ordem de execução dos decorators
+Simplicação no design de decorators
+Portabilidade de funcionalidade antiga para decorators
+
+-----------------------------------------------------------------------------------
+
+Segue o código de um decorator de propriedade:
+
+export function domInjector(seletor: string) {
+
+    return function(target: any, propertyKey: string) {
+        console.log(`Modificando prototype ${target.constructor.name}
+             e adicionando getter para a propriedade ${propertyKey}`);
+
+        const getter = function() {
+            const elemento = <HTMLElement>document.querySelector(seletor);
+            return elemento;
+        }
+    }
+}
+
+Marque alternativa verdadeira sobre o código:
+
+R: Faltou aplicar o getter criado à propriedade definida pela variável 
+propertyKey através de Object.defineProperty.
+
+-----------------------------------------------------------------------------------
+
+Como evitar código duplicado
+Decorator de propriedade
+Criação dinâmica de getters
+O uso de Object.defineProperty
+Cache de decorators
+
+-----------------------------------------------------------------------------------
+
+Clarice precisava buscar os dados de uma API que retorna os dados dos alunos 
+matriculados em sua turma.
+
+Vejamos um exemplo:
+
+fetch('http://endereco-da-api.com.br/alunos/1')
+.then(res => res.json())
+.then((aluno: any) => {
+    console.log(aluno.nome);
+    console.log(aluno.matricula);
+
+    // faz algo com o aluno
+});
+
+5 meses depois, a API que ela utilizava mudou a propriedade matricula para 
+inscricao. Com certeza a aplicação de Clarice se comportou erradamente. 
+Então, ela foi e alterou seu código para:
+
+fetch('http://endereco-da-api.com.br/alunos/1')
+.then(res => res.json())
+.then((aluno: any) => {
+    console.log(aluno.nome);
+
+    // modificou aqui! Veja que ela escreveu errado!
+    console.log(aluno.inscrica);
+
+    // faz algo com o aluno
+});     
+
+No entanto, ao realizar a correção, ela escreveu errado o nome da propriedade 
+inscricao. Novamente, ela só descobriu o problema em runtime para então realizar 
+o ajuste final:
+
+fetch('http://endereco-da-api.com.br/alunos/1')
+.then(res => res.json())
+.then((aluno: any) => {
+    console.log(aluno.nome);
+
+    // modificou aqui! Veja que ela escreveu corretamente.
+    console.log(aluno.inscricao);
+
+    // faz algo com o aluno
+});    
+
+Se Clarice tivesse definido uma interface (um formato) para os dados recebidos 
+do servidor, além das alterações serem mais fáceis de realizar, ela não teria
+ como cometer o erro que cometeu escrevendo inscrica em vez de inscricao.
+
+Marque a alternativa que cria a interface Aluno que define as propriedades
+ mais recentes da API. Inclusive, aquela que tipa corretamente o retorno.
+
+Selecione uma alternativa
+
+R: export interface Aluno {
+    nome: string;
+    inscricao: string
+}
+
+fetch('http://endereco-da-api.com.br/alunos/1')
+.then(res => res.json())
+.then((aluno: Aluno) => {
+
+    console.log(aluno.nome);
+    console.log(aluno.inscricao);
+
+    // faz algo com o aluno
+});  
+
+-----------------------------------------------------------------------------------
+
+API externa
+Consumindo API externa
+Definindo uma interface para a API
+Isolando o acesso à API em um serviç
+
+-----------------------------------------------------------------------------------
+
+Olga estudou Java durante um bom tempo, inclusive C#. Ela decidiu replicar um 
+código que havia escrito nessas linguagem em TypeScript.
+
+Ela criou duas classes que representam formas geométricas:
+
+class Retangulo {
+
+    constructor(private altura: number, private lado: number) {}
+
+    calculaArea(): number {
+
+        return this.altura * this.lado;
+    }
+}
+
+class Quadrado {
+
+    constructor(private lado: number) {}
+
+    calculaArea(): number {
+
+        return this.lado * this.lado;
+    }
+}
+
+Em seguida, criou a classe CalculadorDeArea. Ela é a responsável em receber N 
+formas geométricas e no final retornar o total da àrea de todas elas. Assim como no 
+ECMASCRIPT 2016, é possível criar métodos estáticos em TypeScript:
+
+class CalculadorDeArea {
+
+    static calcula(area1: Quadrado, area2: Retangulo): number {
+
+        return area1.calculaArea() + area2.calculaArea();
+    }
+}
+
+Para testar seu código ela fez:
+
+const quadrado = new Quadrado(30);
+const retangulo = new Retangulo(50, 30);
+
+const total = CalculadorDeArea.calcula(quadrado, retangulo);
+console.log(total);
+
+Excelente! Funcionou como esperado. Contudo, ela precisou criar mais uma área 
+calculável:
+
+class Circulo {
+
+    constructor(private raio: number) {}
+
+    calculaArea() {
+
+        return Math.PI * this.raio * this.raio;
+    }
+}
+
+O problema agora é que ela precisará alterar o método CalculadorDeArea.calcula para 
+receber agora um objeto do tipo Circulo, inclusive alterar sua lógica para que seja
+ capaz de levar em consideração a nova area. É uma situação na qual herança não 
+ ajudaria, pois não faria sentido ela herdar um código já pronto, pois o cálculo 
+ da área é sempre diferente para as formas geométricas. Foi então que ela lembrou 
+ que o uso de interfaces pode ajudá-la.
+
+ interface AreaCalculavel {
+
+    calculaArea(): number;
+}
+
+Em seguida, fez com que as três classes Quadrado, Retangulo e Circulo a implementassem:
+
+class Retangulo implements AreaCalculavel {
+
+    constructor(private altura: number, private lado: number) {}
+
+    calculaArea(): number {
+
+        return this.altura * this.lado;
+    }
+}
+
+class Quadrado implements AreaCalculavel  {
+
+    constructor(private lado: number) {}
+
+    calculaArea(): number {
+
+        return this.lado * this.lado;
+    }
+}
+
+class Circulo implements AreaCalculavel {
+
+    constructor(private raio: number) {}
+
+    calculaArea() {
+
+        return Math.PI * this.raio * this.raio;
+    }
+}
+
+Ao implementar a interface AreaCalculavel, todas as classes ganham a obrigação de 
+definir o método definido pela interface. Como elas já definiam esse métodos antes 
+mesmo de implementá-la, o código compilou sem problema algum.
+
+Marque a opção que altera corretamente a classe CalculadorDeArea para que possa 
+lidar com objetos que implementem a interface AreaCalculavel:
+
+R: class CalculadorDeArea {
+    static calcula(...areas: AreaCalculavel[]): number {
+        return areas.reduce((total, area) => total + area.calculaArea(), 0);
+    }
+}
+
+const quadrado = new Quadrado(30);
+const retangulo = new Retangulo(50, 30);
+const circulo = new Circulo(20);
+
+const total = CalculadorDeArea.calcula(quadrado, retangulo, circulo);
+console.log(total);
+
+-----------------------------------------------------------------------------------
+
+Marque apenas as opções verdadeiras à respeito do que aprendemos ao longo do curso:
+
+Alternativa correta:
+
+Uma interface pode estender outras interfaces.
+
+Uma classe em TypeScript pode implementar quantas interfaces for necessário.
+
+-----------------------------------------------------------------------------------
+
+Marque a única opção que apresenta uma sintaxe inválida no uso de herança e 
+interfaces.
+
+class a extends b, c implements d {
+}
+
+-----------------------------------------------------------------------------------
+
+Chega de múltiplos console.log
+Aplicação prática do Polimorfismo
+Interface de método
+Evitando importar negociações duplicadas
+Estendendo interfaces
+Geração de sourmaps e debug da aplicação no navegador
